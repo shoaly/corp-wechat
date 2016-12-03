@@ -40,6 +40,8 @@ use Pimple\Container;
 use Symfony\Component\HttpFoundation\Request;
 
 use EasyWeChat\Foundation\Config;
+
+
 /**
  * Class Application.
  *
