@@ -4,6 +4,6 @@ namespace CorpWechat;
 
 class Application{
 	public function init(){
-		dd('fire');
+		dd('fire3');
 	}
 }
