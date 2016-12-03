@@ -1,0 +1,20 @@
+{
+    "name": "shoaly/corp-wechat",
+    "description": "for wechat",
+    "type": "library",
+    "authors": [
+        {
+            "name": "shoaly",
+            "email": "shoaly@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+				"overtrue/wechat"	: "3.1.*"
+		},
+		"autoload": {
+        "psr-4": {
+            "CorpWechat\\": "src/"
+        }
+    }
+}
