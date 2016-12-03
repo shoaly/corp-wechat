@@ -1,5 +1,5 @@
 <?php
-namespace Hexinhui\CorpWechat;
+namespace CorpWechat;
 
 
 class Application{
