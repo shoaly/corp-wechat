@@ -2,6 +2,7 @@
     "name": "shoaly/corp-wechat",
     "description": "for wechat",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "shoaly",
