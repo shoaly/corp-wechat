@@ -1,4 +1,5 @@
-# CorpWechat 用了80% overture/wechat的轮子, composer 也依赖 overtrue/wechat:3.1.*
+# CorpWechat overture/wechat的企业号版本
+- 用了80% overture/wechat的轮子, composer 也依赖 overtrue/wechat:3.1.*
 - 目的: 再导入企业号的配置之后, 用 overtrue/wechat的文档和对微信的改进思路无痛使用企业号
 - 更详细的文档等待所有模块构建完成之后再补充吧.
 - 本项目主要是在laravel中测试通过, 跟公众号那边类似 也需要注入一个config配置文件, 这里有默认模板: <https://github.com/shoaly/corp-wechat/blob/dev/corp-wechat.php>
