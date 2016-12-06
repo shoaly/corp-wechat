@@ -10,7 +10,7 @@
  */
 
 /**
- * NoticeServiceProvider.php.
+ * StaffServiceProvider.php.
  *
  * This file is part of the wechat.
  *
@@ -21,14 +21,15 @@
  */
 namespace CorpWechat\Foundation\ServiceProviders;
 
-use EasyWeChat\Notice\Notice;
+use EasyWeChat\Staff\Session;
+use CorpWechat\Notice\Notice;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class NoticeServiceProvider.
+ * Class StaffServiceProvider.
  */
-class NoticeServiceProvider extends \EasyWeChat\Foundation\ServiceProviders\NoticeServiceProvider 
+class NoticeServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.
@@ -43,5 +44,8 @@ class NoticeServiceProvider extends \EasyWeChat\Foundation\ServiceProviders\Noti
         $pimple['notice'] = function ($pimple) {
             return new Notice($pimple['access_token']);
         };
+        // dd($pimple['notice']);
+
+
     }
 }

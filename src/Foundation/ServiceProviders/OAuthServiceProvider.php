@@ -28,7 +28,7 @@ use Pimple\ServiceProviderInterface;
 /**
  * Class OAuthServiceProvider.
  */
-class OAuthServiceProvider extends \EasyWeChat\Foundation\ServiceProviders\OAuthServiceProvider
+class OAuthServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.
@@ -43,31 +43,16 @@ class OAuthServiceProvider extends \EasyWeChat\Foundation\ServiceProviders\OAuth
         $pimple['oauth'] = function ($pimple) {
             $callback = $this->prepareCallbackUrl($pimple);
             $scopes = $pimple['config']->get('oauth.scopes', []);
-
-            
-
-            $config =    [
-                'wechat' => [
-                    'open_platform' => $pimple['config']['open_platform'],
-                    'client_id' => $pimple['config']['app_id'],
-                    'client_secret' => $pimple['config']['secret'],
-                    'redirect' => $callback,
-                ],
-            ];
-            // dd($pimple['config']);
             $config = [
-                'corp-wechat' => [
-                    // 'open_platform' => $pimple['config']['open_platform'],
+                'corp_wechat' => [
                     'client_id' => $pimple['config']['corp_id'],
                     'client_secret' => $pimple['config']['secret'],
                     'redirect' => $pimple['config']['oauth']['callback'],
                 ],
-                'longlive_access_token'=>$pimple['config']['longlive_access_token'],
+                'longlive_access_token'=>$pimple['access_token']->getToken(),
             ];
-
             // dd($config);
-
-            $socialite = (new Socialite($config))->driver('corp-wechat');
+            $socialite = (new Socialite($config))->driver('corp_wechat');
 
             // dd($socialite);
             if (!empty($scopes)) {

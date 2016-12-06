@@ -10,7 +10,7 @@
  */
 
 /**
- * NoticeServiceProvider.php.
+ * JsServiceProvider.php.
  *
  * This file is part of the wechat.
  *
@@ -21,14 +21,14 @@
  */
 namespace CorpWechat\Foundation\ServiceProviders;
 
-use EasyWeChat\Notice\Notice;
+use CorpWechat\Js\Js;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class NoticeServiceProvider.
+ * Class JsServiceProvider.
  */
-class NoticeServiceProvider extends \EasyWeChat\Foundation\ServiceProviders\NoticeServiceProvider 
+class JsServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.
@@ -40,8 +40,11 @@ class NoticeServiceProvider extends \EasyWeChat\Foundation\ServiceProviders\Noti
      */
     public function register(Container $pimple)
     {
-        $pimple['notice'] = function ($pimple) {
-            return new Notice($pimple['access_token']);
+        $pimple['js'] = function ($pimple) {
+            $js = new Js($pimple['access_token']);
+            $js->setCache($pimple['cache']);
+
+            return $js;
         };
     }
 }

@@ -28,7 +28,6 @@ namespace CorpWechat\Foundation;
 
 use Doctrine\Common\Cache\Cache as CacheInterface;
 use Doctrine\Common\Cache\FilesystemCache;
-//use EasyWeChat\Core\AccessToken;
 use CorpWechat\Core\AccessToken;
 use EasyWeChat\Core\Http;
 use EasyWeChat\Support\Log;
@@ -77,24 +76,38 @@ class Application extends Container
      * @var array
      */
     protected $providers = [
-        // ServiceProviders\ServerServiceProvider::class,
-        // ServiceProviders\UserServiceProvider::class,
-        // ServiceProviders\JsServiceProvider::class,
+        //oauth认证
         ServiceProviders\OAuthServiceProvider::class,
-        // ServiceProviders\MenuServiceProvider::class,
-        // ServiceProviders\NoticeServiceProvider::class,
-        // ServiceProviders\MaterialServiceProvider::class,
-        // ServiceProviders\StaffServiceProvider::class,
-        // ServiceProviders\UrlServiceProvider::class,
-        // ServiceProviders\QRCodeServiceProvider::class,
-        // ServiceProviders\SemanticServiceProvider::class,
-        // ServiceProviders\StatsServiceProvider::class,
-        // ServiceProviders\PaymentServiceProvider::class,
-        // ServiceProviders\POIServiceProvider::class,
-        // ServiceProviders\ReplyServiceProvider::class,
-        // ServiceProviders\BroadcastServiceProvider::class,
-        // ServiceProviders\CardServiceProvider::class,
-        // ServiceProviders\DeviceServiceProvider::class,
+
+        //消息推送
+        ServiceProviders\NoticeServiceProvider::class,
+
+        // 用户模块
+        ServiceProviders\UserServiceProvider::class,
+
+        // h5 js jdk, 这个接口里面 openEnterpriseContact 由于前端没有任何错误提示, 搞得我死去活来啊~~~
+        ServiceProviders\JsServiceProvider::class,
+
+        // 媒体资源, 明天来开发这个保证 图片上传可以用
+        ServiceProviders\MaterialServiceProvider::class,
+
+        //响应 被动消息
+        ServiceProviders\ServerServiceProvider::class,
+
+        // 这两个还比较重要
+        // \EasyWeChat\Foundation\ServiceProviders\QRCodeServiceProvider::class, //制作带事件的二维码
+        // \EasyWeChat\Foundation\ServiceProviders\MenuServiceProvider::class, //微信菜单
+
+
+        // \EasyWeChat\Foundation\ServiceProviders\UrlServiceProvider::class, //短链接
+        // \EasyWeChat\Foundation\ServiceProviders\SemanticServiceProvider::class, //语义接口
+        // \EasyWeChat\Foundation\ServiceProviders\StatsServiceProvider::class, //数据统计接口
+        // \EasyWeChat\Foundation\ServiceProviders\PaymentServiceProvider::class, //微信支付
+        // \EasyWeChat\Foundation\ServiceProviders\POIServiceProvider::class, // 门店模块
+        // \EasyWeChat\Foundation\ServiceProviders\ReplyServiceProvider::class, //自动回复
+        // \EasyWeChat\Foundation\ServiceProviders\BroadcastServiceProvider::class, //群发消息
+        // \EasyWeChat\Foundation\ServiceProviders\CardServiceProvider::class, //会员卡
+        // \EasyWeChat\Foundation\ServiceProviders\DeviceServiceProvider::class, //微信硬件
     ];
 
     /**
@@ -195,6 +208,7 @@ class Application extends Container
     {
         foreach ($this->providers as $provider) {
             $this->register(new $provider());
+
         }
     }
 
@@ -211,7 +225,9 @@ class Application extends Container
             $this['cache'] = $this['config']['cache'];
         } else {
             $this['cache'] = function () {
-                return new FilesystemCache(sys_get_temp_dir());
+                // return new FilesystemCache(sys_get_temp_dir());
+                // 把cache的目录放到 laravel下面 方便管理
+                return new FilesystemCache(storage_path() . "/cache");
             };
         }
 
