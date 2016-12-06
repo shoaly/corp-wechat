@@ -1,8 +1,25 @@
 # CorpWechat 用了80% overture/wechat的轮子, composer 也依赖 overtrue/wechat:3.1.*
 - 目的: 再导入企业号的配置之后, 用 overtrue/wechat的文档和对微信的改进思路无痛使用企业号
 - 更详细的文档等待所有模块构建完成之后再补充吧.
+- 本项目主要是在laravel中测试通过, 跟公众号那边类似 也需要注入一个config配置文件, 这里有默认模板: <https://github.com/shoaly/corp-wechat/blob/dev/corp-wechat.php>
+- 如何开始?
+```
+use CorpWechat\Foundation\Application;
+
+...
+$wechat_biz = new Application(config('corp-wechat'));
+$server = $this->wechat_biz->server;
+$server->setMessageHandler(function ($message) {
+    // $message->FromUserName // 用户的 openid
+    // $message->MsgType // 消息类型：event, text....
+    // return sprintf("%s您好！欢迎关注我, 消息类型: %s",$message->FromUserName,$message->MsgType);
+    return  new Image(['media_id' => "zUbMbXXXU7l3l4MsvVmUtHrIVUX7zbSO0OAYktfTCI1Xh-lxfBDiSyVeUqaTQbdm"]);
+});
+$response = $server->serve();
+return $response; // Laravel 里请使用：return $response;
 
 
+```
 ## 已经完成的模块: 
 
 ```
