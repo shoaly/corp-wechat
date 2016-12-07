@@ -45,14 +45,13 @@ ServiceProviders\MaterialServiceProvider::class,
 
 //响应 被动消息
 ServiceProviders\ServerServiceProvider::class,
+
+//微信菜单
+ServiceProviders\MenuServiceProvider::class, 
+
 ```
 ## 未完成模块:
 ```
-// 这两个还比较重要
-// \EasyWeChat\Foundation\ServiceProviders\QRCodeServiceProvider::class, //制作带事件的二维码
-// \EasyWeChat\Foundation\ServiceProviders\MenuServiceProvider::class, //微信菜单
-
-
 // \EasyWeChat\Foundation\ServiceProviders\UrlServiceProvider::class, //短链接
 // \EasyWeChat\Foundation\ServiceProviders\SemanticServiceProvider::class, //语义接口
 // \EasyWeChat\Foundation\ServiceProviders\StatsServiceProvider::class, //数据统计接口
@@ -62,5 +61,6 @@ ServiceProviders\ServerServiceProvider::class,
 // \EasyWeChat\Foundation\ServiceProviders\BroadcastServiceProvider::class, //群发消息
 // \EasyWeChat\Foundation\ServiceProviders\CardServiceProvider::class, //会员卡
 // \EasyWeChat\Foundation\ServiceProviders\DeviceServiceProvider::class, //微信硬件
+// \EasyWeChat\Foundation\ServiceProviders\QRCodeServiceProvider::class, //制作带事件的二维码, 企业号目前还不支持
 
 ```
