@@ -1,8 +1,7 @@
 {
     "name": "shoaly/corp-wechat",
-    "description": "微信企业号插件, forked from overtrue/wechat, 按照overtrue/wechat的接口和大部分轮子, 重新写了一份服务于服务号",
+    "description": "for wechat",
     "type": "library",
-    "license": "MIT",
     "authors": [
         {
             "name": "shoaly",

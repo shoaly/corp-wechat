@@ -95,9 +95,10 @@ class Application extends Container
         ServiceProviders\ServerServiceProvider::class,
 
         // 这两个还比较重要
-        // \EasyWeChat\Foundation\ServiceProviders\QRCodeServiceProvider::class, //制作带事件的二维码
-        // \EasyWeChat\Foundation\ServiceProviders\MenuServiceProvider::class, //微信菜单
+        ServiceProviders\MenuServiceProvider::class, //微信菜单
 
+        // not supported
+        // ServiceProviders\QRCodeServiceProvider::class, //制作带事件的二维码
 
         // \EasyWeChat\Foundation\ServiceProviders\UrlServiceProvider::class, //短链接
         // \EasyWeChat\Foundation\ServiceProviders\SemanticServiceProvider::class, //语义接口

@@ -175,7 +175,7 @@ class Guard
             $this->request->get('nonce'),
         ];
 
-        Log2::info([$params,$this->request->get('msg_signature'),Input::all()]);
+        // Log2::info([$params,$this->request->get('msg_signature'),Input::all()]);
         $msg_signature = $this->request->get('msg_signature');
         $nonce = $this->request->get('nonce');
         $timestamp = $this->request->get('timestamp');
@@ -391,7 +391,7 @@ class Guard
         }
 
         Log::debug('Message detail:', $message);
-        Log2::info( $message);
+        // Log2::info( $message);
 
         $message = new Collection($message);
 
