@@ -1,4 +1,5 @@
-# CorpWechat overture/wechat的企业号版本(依赖有一些问题, 因为overtrue/socialite那边 有一个pull request 还没成功合并)
+# CorpWechat overture/wechat的企业号版本
+- 依赖有一些问题, 因为overtrue/socialite那边 有一个pull request 还没成功合并
 - 用了80% overture/wechat的轮子, composer 也依赖 overtrue/wechat:3.1.*
 - 目的: 再导入企业号的配置之后, 用 overtrue/wechat的文档和对微信的改进思路无痛使用企业号
 - 更详细的文档等待所有模块构建完成之后再补充吧.
